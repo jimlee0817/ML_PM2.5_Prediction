@@ -12,17 +12,9 @@ import numpy as np
 
 # open the csv file
 rawData = np.genfromtxt('train.csv', delimiter=',')
-data = rawData[1:,3:]
+data = rawData[1:,3:] # data is ready, but need to be reorganized
 
 
-'''        
-datareader = csv.reader(datafile, delimiter=';')
-data = []
-for row in datareader:
-    data.append(row)    
 
-print (data[1,0])
-'''
-        
 
     
