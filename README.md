@@ -8,7 +8,9 @@ In the train.csv, we have the real observation data from a weather station. What
 ### Step 2: Sample Training Data From Raw Data
 The raw data can be resampled every 10 hour, so that we will have 9 hours of training datas input and the real value of PM2.5 at 10th hour. After resampling, we should have 471x12 = 5652 sets of training input(x) and training output(y). 
 ### Step 3: Choose The Function Set (Model)
-We choose the linear regression model: y = wx + b. In our case, this function should be expressed as **y** = **X** **W** + **b**
+We choose the linear regression model: y = wx + b. In our case, this function should be expressed as **y** = **X** **w** + **b**
+1. **y** = [y1 y2 y3 ... y5652]^T is the 5652x1 vector that represent the value of PM2.5 at 10th hour
+2. 
 ### Step 4: Define The Loss Function
 
 
