@@ -52,8 +52,20 @@ for i in range(data.shape[0]):
         
 '''Now We Have The ReorganizedData, We Have To Seperate the Train_x, Train_y from it'''
 
+X = np.zeros((5652, 162)) # Train x
+y_head = np.zeros((5652,1)) # Train y
+      
+for month in range(12):
+    for hour in range(471):
+        xi = []
+        for i in range(hour,hour + 9):
+            xi = np.append(xi,np.transpose(reorganizedData[:, month * 480 + i]))
+            
+        y_head[month * 471 + hour, 0] = reorganizedData[9, month * 480 + hour + 9]           
+        X[month * 471 + hour,:] = xi
         
-    
+''' Now we have successfully sample 5652 sets of training data. It's time to do the iteration'''
+
 
 
     
