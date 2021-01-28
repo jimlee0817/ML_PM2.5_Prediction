@@ -9,7 +9,7 @@ In the train.csv, we have the real observation data from a weather station. What
 The raw data can be resampled every 10 hour, so that we will have 9 hours of training datas input and the real value of PM2.5 at 10th hour. After resampling, we should have 471x12 = 5652 sets of training input(x) and training output(y). 
 ### Step 3: Choose The Function Set (Model)
 We choose the linear regression model y = wx + b. 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
 ### Step 4: Define The Loss Function
 
 
