@@ -9,7 +9,7 @@ Created on Tue Jan 26 23:08:32 2021
 
 import csv
 import numpy as np
-import math
+import math 
 
 # open the csv file
 rawData = np.genfromtxt('train.csv', delimiter=',')
@@ -65,6 +65,27 @@ for month in range(12):
         X[month * 471 + hour,:] = xi
         
 ''' Now we have successfully sample 5652 sets of training data. It's time to do the iteration'''
+''' Define the parameter for training'''
+lr = 100
+
+w = np.zeros((162,1))
+prevGrad = np.zeros((162,1))
+n = 1
+
+for i in range(1000000000):
+    y = np.dot(X,w)
+    grad = 2 * (np.dot(np.transpose(X),y-y_head))
+    prevGrad = prevGrad + grad**2
+    w = w - lr * grad / (np.sqrt(prevGrad / n))
+    n = n + 1
+    ''' Calculate the error'''
+    if i % 1000 == 0:
+        print(np.dot(np.transpose(y-y_head), (y-y_head)))
+        
+        
+    
+    
+
 
 
 
