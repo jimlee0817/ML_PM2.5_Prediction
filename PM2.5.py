@@ -71,23 +71,56 @@ for row in range(X.shape[0]):
                                                         
                                                         
 ''' Now we have successfully sample 5652 sets of training data. It's time to do the iteration'''
-''' Define the parameter for training'''
-lr = 1000
 
-w = np.zeros((162,1))
-prevGrad = np.zeros((162,1))
-n = 1
+''' Define the way of training method'''
 
-for i in range(1000000000):
-    y = np.dot(X,w)
-    grad = 2 * (np.dot(np.transpose(X),y-y_head))
-    prevGrad = prevGrad + grad**2
-    #w = w - lr * grad / (np.sqrt(prevGrad / n))
-    w = w - lr * grad / (np.sqrt(prevGrad))
-    n = n + 1
-    ''' Calculate the error'''
-    if i % 1000 == 0:
-        print(np.dot(np.transpose(y-y_head), (y-y_head)))
+method = "ADAM"
+
+if method == "ADAGRAD": 
+    print("ADAGRAD")
+    lr = 0.01
+    w = np.zeros((162,1))
+    prevGrad = np.zeros((162,1))
+    eipsilon = 1E-8 # this is for numerical stability
+    
+    for i in range(1, 1000000000):
+        y = np.dot(X,w)
+        grad = 2 * (np.dot(np.transpose(X),y-y_head))
+        prevGrad += grad**2
+        #w = w - lr * grad / (np.sqrt(prevGrad / n))
+        w -= lr * grad / (np.sqrt(prevGrad) + 1E-8) # 1E-8 is for numerical stable
+
+        ''' Calculate the error'''
+        if i % 1000 == 0:
+            print(np.dot(np.transpose(y-y_head), (y-y_head)))
+            
+elif method == "ADAM":
+    print("ADAM")
+    lr = 0.01
+    w = np.zeros((162,1))
+    beta1 = 0.9
+    beta2 = 0.999
+    eipsilon = 1E-8 # this is for numerical stability
+    v = np.zeros([162,1])
+    s = np.zeros([162,1])
+    for i in range(1, 1000000):
+        y = np.dot(X,w)
+        grad = 2 * (np.dot(np.transpose(X),y-y_head))
+        v = beta1 * v + (1 - beta1) * grad
+        s = beta2 * s + (1 - beta2) * grad ** 2
+        
+        v_correction = v / (1 - beta1 ** i)
+        s_correction = s / (1 - beta2 ** i)
+        
+        w -= lr * v_correction / (np.sqrt(s_correction) + eipsilon)
+        
+        ''' Calculate the error'''
+        if i % 1000 == 0:
+            print(np.dot(np.transpose(y-y_head), (y-y_head)))
+            
+            
+            
+        
         
         
     
