@@ -42,13 +42,14 @@ reorganizedData = np.zeros((18,5760))
 
 startRowIndex = 0
 startColumnIndex = 0
-counter = 0
 
+counter = 1
 for i in range(data.shape[0]):
-    if i % 18 == 0 and i != 0:
-        reorganizedData[:,startColumnIndex:startColumnIndex + 24] = data[startRowIndex:i, :]
-        startRowIndex = i
+    if counter % 18 == 0:
+        reorganizedData[:,startColumnIndex:startColumnIndex + 24] = data[startRowIndex:i + 1, :]
+        startRowIndex = i + 1
         startColumnIndex = startColumnIndex + 24 
+    counter += 1
         
 '''Now We Have The ReorganizedData, We Have To Seperate the Train_x, Train_y from it'''
 
@@ -63,10 +64,15 @@ for month in range(12):
             
         y_head[month * 471 + hour, 0] = reorganizedData[9, month * 480 + hour + 9]           
         X[month * 471 + hour,:] = xi
-        
+''' The training data need to be normalized'''
+
+for row in range(X.shape[0]):
+    X[row,:] = (X[row,:] - X[row,:].mean()) / math.sqrt(X[row,:].var())
+                                                        
+                                                        
 ''' Now we have successfully sample 5652 sets of training data. It's time to do the iteration'''
 ''' Define the parameter for training'''
-lr = 100
+lr = 1000
 
 w = np.zeros((162,1))
 prevGrad = np.zeros((162,1))
@@ -76,7 +82,8 @@ for i in range(1000000000):
     y = np.dot(X,w)
     grad = 2 * (np.dot(np.transpose(X),y-y_head))
     prevGrad = prevGrad + grad**2
-    w = w - lr * grad / (np.sqrt(prevGrad / n))
+    #w = w - lr * grad / (np.sqrt(prevGrad / n))
+    w = w - lr * grad / (np.sqrt(prevGrad))
     n = n + 1
     ''' Calculate the error'''
     if i % 1000 == 0:
