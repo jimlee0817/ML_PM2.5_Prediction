@@ -16,6 +16,7 @@ We choose the linear regression model: y = wx + b. In our case, this function sh
 ### Step 4: Define The Loss Function
 We define the loss function as the square sum of all the error from a set of training data. That is, L(**w**) = sigma(**xi** **w** + bi - yi)^2. 
 ### Step 5: Define The Gradient Of The Loss Function L(**w**)
+Take the gradient of the loss function: gradient(L) = dL/d**w** = 2**xi**(sigma (**xi** **w** + bi - yi)) = 2**xi**
 
 
 
