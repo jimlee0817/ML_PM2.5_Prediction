@@ -14,7 +14,9 @@ We choose the linear regression model: y = wx + b. In our case, this function sh
 3. **w** = [w1 ... w162]^T is a 162x1 column vector
 4. **b** = [b1 ... b5652] is a 5652x1 column vector
 ### Step 4: Define The Loss Function
-We define the loss function as the square sum of all the error from a set of training data. That is, L(**w**) = sigma(**xi** **w** + bi - yi).
+We define the loss function as the square sum of all the error from a set of training data. That is, L(**w**) = sigma(**xi** **w** + bi - yi)^2. 
+### Step 5: Define The Gradient Of The Loss Function L(**w**)
+
 
 
 
