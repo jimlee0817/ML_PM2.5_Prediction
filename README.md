@@ -18,7 +18,8 @@ We define the loss function as the square sum of all the error from a set of tra
 ### Step 5: Define The Gradient Of The Loss Function L(**w**)
 1. Take the gradient of the loss function: gradient(L) = dL/d**w** = 2(sigma **xi**^T(**xi** **w** + bi - y_head_i))
 2. Let yi = (**xi** **w** + bi) be the predicted value of Pm2.5 
-3. Rewrite the equation in 1. We have gradient(L) = 2(sigma **xi**^T(yi - y_head_i)) = 2**X**(**y** - **y_head**)
+3. Rewrite the equation in 1. We have gradient(L) = 2(sigma **xi**^T(yi - y_head_i)) = 2**X**^T(**y** - **y_head**)
+
 
 
 
