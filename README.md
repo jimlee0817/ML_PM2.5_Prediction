@@ -16,9 +16,10 @@ We choose the linear regression model: y = wx + b. In our case, this function sh
 ### Step 4: Define The Loss Function
 We define the loss function as the square sum of all the error from a set of training data. That is, L(**w**) = sigma(**xi** **w** + bi - y_head_i)^2. 
 ### Step 5: Define The Gradient Of The Loss Function L(**w**)
-1. Take the gradient of the loss function: gradient(L) = dL/d**w** = 2(sigma **xi**(**xi** **w** + bi - y_head_i))
+1. Take the gradient of the loss function: gradient(L) = dL/d**w** = 2(sigma **xi**^T(**xi** **w** + bi - y_head_i))
 2. Let yi = (**xi** **w** + bi) be the predicted value of Pm2.5 
-3. Rewrite the equation in 1. We have gradient(L) = 2(sigma **xi**(yi - y_head_i)) = 
+3. Rewrite the equation in 1. We have gradient(L) = 2(sigma **xi**^T(yi - y_head_i)) = 2**X**(**y** - **y_head**)
+
 
 
 
