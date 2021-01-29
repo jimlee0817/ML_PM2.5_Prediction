@@ -10,10 +10,11 @@ The raw data can be resampled every 10 hour, so that we will have 9 hours of tra
 ### Step 3: Choose The Function Set (Model)
 We choose the linear regression model: y = wx + b. In our case, this function should be expressed as **y** = **X** **w** + **b**
 1. **y** = [y1 y2 y3 ... y5652]^T is the 5652x1 vector that represent the value of PM2.5 at 10th hour
-2. **X** = [**x1** **x2** ... **x5652**]^T and **x1** = [feature1 at 1st hour, ... feature18 at 1st hour, feature1 at 2nd hour ... feature 18 at 9th hour] is a 1x162 row vector. So **X** is a 5652x162 matrix
+2. **X** = [**x1** **x2** ... **x5652**]^T and **xi** = [feature1 at 1st hour, ... feature18 at 1st hour, feature1 at 2nd hour ... feature 18 at 9th hour] (i = 1~5652) is a 1x162 row vector. So **X** is a 5652x162 matrix
 3. **w** = [w1 ... w162]^T is a 162x1 column vector
 4. **b** = [b1 ... b5652] is a 5652x1 column vector
 ### Step 4: Define The Loss Function
+We define the loss function as the square sum of all the error from a set of training data. That is, L(**w**) = sigma(**xi** **w** + bi - yi).
 
 
 
